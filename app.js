@@ -8,7 +8,7 @@ module.exports = app => {
   app.beforeStart(async () => {
     const swagger = swaggerLoader(app);
 
-    if (app.config.swaggerdoc.enable) {
+    if (app.config.swaggerbuilder.enable) {
       app.get("/swagger-doc", ctx => {
         ctx.response.status = 200;
         ctx.response.type = "text/html";
@@ -17,7 +17,7 @@ module.exports = app => {
       });
       app.logger.info("[egg-swagger-doc] register router: /swagger-doc");
     }
-    
+
     app["rule"] = swaggerRule(swagger.definitions);
   });
 };

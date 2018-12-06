@@ -14,7 +14,7 @@
  * @property {Boolean} enableSecurity - 是否使用安全验证
  * @property {Boolean} enable - swagger-ui是否可以访问
  */
-exports.swaggerdoc = {
+exports.swaggerbuilder = {
   dirScanner: "./app/controller",
   basePath: "/",
   apiInfo: {

@@ -1,20 +1,20 @@
-# eggjs-swagger
+# egg-swagger-builder
 
-应用于 eggjs 的 plugin, 可自动生成 SwaggerUI。应用启动后访问/swaagger-ui.html 可以浏览页面，访问/swagger-doc,获取 swaggerjson.
+通过注释块中的 Swagger 语法标签生成 swagger.json，从而支持 swagger-ui 加载预览。
 
 ## Install
 
 ```bash
-$ npm i egg-swagger-doc --save
+$ npm i egg-swagger-builder --save
 ```
 
 ## Usage
 
 ```js
 // {app_root}/config/plugin.js
-exports.swaggerdoc = {
+exports.swaggerbuilder = {
   enable: true,
-  package: "egg-swagger-doc"
+  package: "egg-swagger-builder"
 };
 ```
 
@@ -22,7 +22,7 @@ exports.swaggerdoc = {
 
 ```js
 // {app_root}/config/config.default.js
-exports.swaggerdoc = {
+exports.swaggerbuilder = {
   dirScanner: "./app/controller",
   apiInfo: {
     title: "egg-swagger",
@@ -47,7 +47,7 @@ see [config/config.default.js](config/config.default.js) for more detail.
 格式：@Controller {ControllerName}
 
 a.如果文件第一个注释块中存在标签@Controller，应用会扫描当前文件下的所有注释块，否则扫描将会跳过该文件。
-b.如果不标示ControllerName，程序会将当前文件的文件名作为ControllerName。
+b.如果不标示 ControllerName，程序会将当前文件的文件名作为 ControllerName。
 
 例：
 
@@ -121,7 +121,7 @@ class HomeController extends Controller {
 如果在 config 中开启并定义了 securityDefinitions,默认 enableSecurity 为 false.则可在注释块中加入@apikey，加入安全验证。也可定义成其他名字，只需@定义好的字段名就好。关于 securityDefinitions 的定义可以自行搜索。
 
 ```js
-exports.swaggerdoc = {
+exports.swaggerbuilder = {
   securityDefinitions: {
     apikey: {
       type: "apiKey",
