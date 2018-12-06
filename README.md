@@ -46,8 +46,8 @@ see [config/config.default.js](config/config.default.js) for more detail.
 
 格式：@Controller {ControllerName}
 
-a.如果文件第一个注释块中存在标签@Controller，应用会扫描当前文件下的所有注释块，否则扫描将会跳过该文件。
-b.如果不标示 ControllerName，程序会将当前文件的文件名作为 ControllerName。
+- 如果文件第一个注释块中存在标签@Controller，应用会扫描当前文件下的所有注释块，否则扫描将会跳过该文件。
+- 如果不标示 ControllerName，程序会将当前文件的文件名作为 ControllerName。
 
 例：
 
@@ -62,43 +62,43 @@ class UserController extends Controller {
 
 ## @Router
 
-格式：@Router {Mothod} {Path}
+格式：@Router {mothod} {path}
 
-    a.Mothod,请求的方法(post/get/put/delete等)，不区分大小写。
-    b.Path,请求的路由。
+- mothod: 请求的方法(post/get/put/delete 等)，不区分大小写。
+- path: 请求的路由。
 
 ## @Request
 
-格式：@Request {Position} {Type} {Name} {Description}
+格式：@Request {position} {type} {name} {description}
 
-    a.position.参数的位置,该值可以是body/path/query/header/formData.
-    b.Type.参数类型，body之外位置目前只支持基础类型,integer/string/boolean/number，及基础类型构成的数组，body中则支持contract中定义的类型。如果position是formData还将支持 file 类型
-    c.Name.参数名称.如果参数名称以*开头则表示必要，否则非必要。
-    d.Description.参数描述
+- position: 参数的位置,该值可以是 body/path/query/header/formData.
+- type: 参数类型，body 之外位置目前只支持基础类型,integer/string/boolean/number，及基础类型构成的数组，body 中则支持 contract 中定义的类型。如果 position 是 formData 还将支持 file 类型
+- name: 参数名称.如果参数名称以\*开头则表示必要，否则非必要。
+- description: 参数描述
 
 ## @Response
 
-格式：@Response {HttpStatus} {Type} {Description}
+格式：@Response {httpStatus} {type} {description}
 
-    a.HttpStatus.Http状态码。
-    b.Type.同Request中body位置的参数类型。
-    d.Description.响应描述。
+- httpStatus: Http 状态码。
+- type: 同 Request 中 body 位置的参数类型。
+- description: 响应描述。
 
 ## @Deprecated
 
-    如果注释块中包含此标识，则表示该注释块注明的接口，未完成或不启用。
+如果注释块中包含此标识，则表示该注释块注明的接口，未完成或不启用。
 
 ## @Description
 
-格式：@Description {Description}
+格式：@Description {description}
 
-    接口具体描述
+接口具体描述
 
 ## @Summary
 
-格式：@Summary {Summary}
+格式：@Summary {summary}
 
-    接口信息小标题
+接口信息小标题
 
 例：
 
@@ -114,8 +114,9 @@ class HomeController extends Controller {
    * @Response 200 baseResponse ok
    */
   async index() {
-    this.ctx.body = 'hi, ' + this.app.plugins.swagger.name;
+    this.ctx.body = "hi, " + this.app.plugins.swagger.name;
   }
+}
 ```
 
 如果在 config 中开启并定义了 securityDefinitions,默认 enableSecurity 为 false.则可在注释块中加入@apikey，加入安全验证。也可定义成其他名字，只需@定义好的字段名就好。关于 securityDefinitions 的定义可以自行搜索。
