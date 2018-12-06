@@ -1,6 +1,5 @@
-'use strict';
+"use strict";
 
-const path = require('path');
 /**
  * egg-swagger-doc default config
  * @member Config#swagger-doc
@@ -16,16 +15,16 @@ const path = require('path');
  * @property {Boolean} enable - swagger-ui是否可以访问
  */
 exports.swaggerdoc = {
-  dirScanner: './app/controller',
-  basePath: '/',
+  dirScanner: "./app/controller",
+  basePath: "/",
   apiInfo: {
-    title: 'egg-swagger',
-    description: 'swagger-ui for egg',
-    version: '1.0.0',
+    title: "egg-swagger",
+    description: "swagger-ui for egg",
+    version: "1.0.0"
   },
-  schemes: ['http', 'https'],
-  consumes: ['application/json'],
-  produces: ['application/json'],
+  schemes: ["http", "https"],
+  consumes: ["application/json"],
+  produces: ["application/json"],
   securityDefinitions: {
     // apikey: {
     //   type: 'apiKey',
@@ -43,15 +42,5 @@ exports.swaggerdoc = {
     // },
   },
   enableSecurity: false,
-  enable: true,
-};
-
-exports.static = {
-  prefix: '/',
-  dir: [path.join(__dirname, '../../../app/public'),path.join(__dirname, '../app/public')],
-  // support lazy load
-  dynamic: true,
-  preload: false,
-  buffer: false,
-  maxFiles: 1000,
+  enable: true
 };
